@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="time_box",
-    version="0.0.1",
+    version="0.0.2",
     author="ZeroSeeker",
     author_email="zeroseeker@foxmail.com",
     description="Time processing tool collection",
