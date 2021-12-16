@@ -4,8 +4,8 @@ with open("README.md", "r", encoding='utf-8') as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="timebox",
-    version="0.0.1",
+    name="time_box",
+    version="0.0.3",
     author="ZeroSeeker",
     author_email="zeroseeker@foxmail.com",
     description="Time processing tool collection",
