@@ -317,8 +317,8 @@ def get_format_date_2(
 def get_format_datetime(
         datetime_ori: str,
         date_delimiter: str = '-',  # 日期分隔符号
-        space_delimiter: str = "+",  # 空格分隔符号
-        time_delimiter: str = '-'  # 时间分隔符号
+        space_delimiter: str = " ",  # 空格分隔符号
+        time_delimiter: str = ':'  # 时间分隔符号
 ):
     """
     将以'-'连接的字符串的日期格式化为日期格式

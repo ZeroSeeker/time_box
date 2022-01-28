@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# coding = utf8
+"""
+@ Author : ZeroSeeker
+@ e-mail : zeroseeker@foxmail.com
+@ GitHub : https://github.com/ZeroSeeker
+@ Gitee : https://gitee.com/ZeroSeeker
+"""
 import setuptools
 
 with open("README.md", "r", encoding='utf-8') as fh:
@@ -5,7 +13,7 @@ with open("README.md", "r", encoding='utf-8') as fh:
 
 setuptools.setup(
     name="time_box",
-    version="0.0.3",
+    version="0.0.4",
     author="ZeroSeeker",
     author_email="zeroseeker@foxmail.com",
     description="Time processing tool collection",
