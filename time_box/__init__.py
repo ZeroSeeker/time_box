@@ -199,7 +199,7 @@ def get_timestamp():
 
 
 def get_timestamp2datetime(
-        timestamp: int,
+        timestamp: int = None,
         f: str = "%Y-%m-%d %H:%M:%S"
 ):
     """
@@ -217,7 +217,7 @@ def get_timestamp2datetime(
 
 
 def get_timestamp2date(
-        timestamp: int,
+        timestamp: int = None,
         f: str = "%Y-%m-%d"
 ):
     """
