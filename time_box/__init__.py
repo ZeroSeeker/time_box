@@ -7,11 +7,13 @@ import copy
 import sys
 
 
-def get_utc_datetime():
+def get_utc_datetime(
+        f: str = '%Y-%m-%dT%H:%M:%SZ'
+):
     """
     获取utc时间
     """
-    utc_datetime_str = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+    utc_datetime_str = datetime.datetime.utcnow().strftime(f)
     return utc_datetime_str
 
 
@@ -23,12 +25,14 @@ def get_utc_timestamp():
     return utc_timestamp_str
 
 
-def get_utc_time_dict():
+def get_utc_time_dict(
+        f: str = '%Y-%m-%dT%H:%M:%SZ'
+):
     """
     获取utc时间的时间和时间戳字典
     """
     utc_time_now = datetime.datetime.utcnow()
-    utc_datetime_str = utc_time_now.strftime('%Y-%m-%dT%H:%M:%SZ')
+    utc_datetime_str = utc_time_now.strftime(f)
     utc_timestamp_str = utc_time_now.timestamp()
     return {'utc_datetime_str': utc_datetime_str, 'utc_timestamp_str': utc_timestamp_str}
 
@@ -112,23 +116,27 @@ def get_second():
     return second
 
 
-def get_time():
+def get_time(
+        f: str = '%H:%M:%S'
+):
     """
     获取当前系统的当前时间格式的时间，精确到秒且只有时间
     :return: 14:20:41
     """
     inner_now = datetime.datetime.now()
-    data_time = inner_now.strftime('%H:%M:%S')
+    data_time = inner_now.strftime(f)
     return data_time
 
 
-def get_datetime():
+def get_datetime(
+        f: str = '%Y-%m-%d %H:%M:%S'
+):
     """
     获取当前系统的当前时间格式的时间，精确到秒
     :return: 2018-08-01 14:18:31
     """
     inner_now = datetime.datetime.now()
-    data_time = inner_now.strftime('%Y-%m-%d %H:%M:%S')
+    data_time = inner_now.strftime(f)
     return data_time
 
 
@@ -141,13 +149,15 @@ def get_datetime_full():
     return inner_now
 
 
-def get_datetime_str_int():
+def get_datetime_str_int(
+        f: str = '%Y%m%d%H%M%S'
+):
     """
     获取当前系统的当前时间格式的时间，精确到秒
     :return: 20180801141831
     """
     inner_now = datetime.datetime.now()
-    data_time = inner_now.strftime('%Y%m%d%H%M%S')
+    data_time = inner_now.strftime(f)
     return data_time
 
 
@@ -165,16 +175,18 @@ def get_relative_date(
 
 
 def get_relative_datetime(
-        num: int = 0
+        num: int = 0,
+        f: str = '%Y-%m-%d %H:%M:%S'
 ):
     """
     获取当前系统当前时间的相对时间：日期，num为0表示当日，num为负数表示向历史推算的天数，num为正数表示向未来推算的天数
     :param num:
+    :param f: 格式
     :return: 2021-04-23 17:23:27
     """
     today = datetime.datetime.now()
     date = today - datetime.timedelta(days=-num)
-    return date.strftime('%Y-%m-%d %H:%M:%S')
+    return date.strftime(f)
 
 
 def get_timestamp():
@@ -460,35 +472,39 @@ def now():
 
 
 def date_string(
-        date=now()
+        date=now(),
+        f: str = '%Y-%m-%d'
 ):
     """
     将输入的时间转换为日期格式的字符串，如果不传入参数将取当前系统时间
     :param date:
     :return:
     """
-    date_string_in = date.strftime('%Y-%m-%d')
+    date_string_in = date.strftime(f)
     return date_string_in
 
 
 def time_string(
-        date=now()
+        date=now(),
+        f: str = '%Y-%m-%d %H-%M-%S'
 ):
-    time_string_in = date.strftime('%Y-%m-%d %H-%M-%S')
+    time_string_in = date.strftime(f)
     return time_string_in
 
 
 def datetime_string(
-        date=now()
+        date=now(),
+        f: str = '%Y-%m-%d %H-%M-%S'
 ):
-    time_string_in = date.strftime('%Y-%m-%d %H-%M-%S')
+    time_string_in = date.strftime(f)
     return time_string_in
 
 
 def datetime_string_chs(
-        date=now()
+        date=now(),
+        f: str = '%Y年%m月%d日%H时%M分%S秒'
 ):
-    time_string_in = date.strftime('%Y年%m月%d日%H时%M分%S秒')
+    time_string_in = date.strftime(f)
     return time_string_in
 
 
@@ -517,12 +533,16 @@ def date_str_list_form_now(
 ):
     start_date = get_add_date(date_string(), -day_num)
     end_date = date_string()
-    res_list = date_str_list(start_date=start_date, end_date=end_date)
+    res_list = date_str_list(
+        start_date=start_date,
+        end_date=end_date
+    )
     return res_list
 
 
 def get_normalized_date_string(
-        days: int = 0
+        days: int = 0,
+        f: str = '%Y-%m-%d %H:%M:%S'
 ):
     """
     获取多少天以前的时间字符串
@@ -531,12 +551,13 @@ def get_normalized_date_string(
     """
     current_time = datetime.datetime.now()
     target_time = current_time - datetime.timedelta(days=days)
-    normalized_target_time = target_time.strftime('%Y-%m-%d %H:%M:%S')
+    normalized_target_time = target_time.strftime(f)
     return normalized_target_time
 
 
 def get_data_date_string(
-        days: int = 0
+        days: int = 0,
+        f: str = '%Y-%m-%d'
 ):
     """
     获取多少天以前的时间字符串
@@ -545,12 +566,13 @@ def get_data_date_string(
     """
     current_time = datetime.datetime.now()
     target_time = current_time - datetime.timedelta(days=days)
-    date_time = target_time.strftime('%Y-%m-%d')
+    date_time = target_time.strftime(f)
     return date_time
 
 
 def get_date_string(
-        days: int = 0
+        days: int = 0,
+        f: str = '%Y-%m-%d'
 ):
     """
     获取多少天以后的时间字符串
@@ -559,7 +581,7 @@ def get_date_string(
     """
     current_time = datetime.datetime.now()
     target_time = current_time + datetime.timedelta(days=days)
-    date_str = target_time.strftime('%Y-%m-%d')
+    date_str = target_time.strftime(f)
     return date_str
 
 
@@ -572,8 +594,13 @@ def time_day_num_start(
     :return: 2018-08-01 00:00:00
     """
     now = datetime.datetime.now()
-    return now - datetime.timedelta(days=num, hours=now.hour, minutes=now.minute, seconds=now.second,
-                                    microseconds=now.microsecond)
+    return now - datetime.timedelta(
+        days=num,
+        hours=now.hour,
+        minutes=now.minute,
+        seconds=now.second,
+        microseconds=now.microsecond
+    )
 
 
 def time_day_num_end(
@@ -585,8 +612,13 @@ def time_day_num_end(
     :return: 2018-08-01 23:59:59
     """
     now = datetime.datetime.now()
-    return now - datetime.timedelta(days=num - 1, hours=now.hour, minutes=now.minute, seconds=now.second + 1,
-                                    microseconds=now.microsecond)
+    return now - datetime.timedelta(
+        days=num - 1,
+        hours=now.hour,
+        minutes=now.minute,
+        seconds=now.second + 1,
+        microseconds=now.microsecond
+    )
 
 
 def timestamp_list_splitter(
