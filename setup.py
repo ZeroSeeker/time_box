@@ -13,11 +13,11 @@ with open("README.md", "r", encoding='utf-8') as fh:
 
 setuptools.setup(
     name="time_box",
-    version="0.0.8",
+    version="0.0.9",
     author="ZeroSeeker",
     author_email="zeroseeker@foxmail.com",
     description="Time processing tool collection",
-    long_description=long_description,
+    # long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://gitee.com/ZeroSeeker/timebox",
     packages=setuptools.find_packages(),
@@ -27,6 +27,6 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-        'pytz==2022.1'
+        'pytz==2021.3'
     ]
 )
