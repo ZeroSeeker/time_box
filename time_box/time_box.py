@@ -407,18 +407,23 @@ def time_gap_days(
 
 
 def get_add_date(
-        date_input: str,
-        num: int,
+        date_input,
+        num: int = 0,
         f: str = '%Y-%m-%d'
 ):
     """
     计算指定日期（date_ori）的相对日期
-    :param date_input:
-    :param num:
-    :param f:
+    :param date_input: 输入的指定日期，类型支持str、datetime.date，例如：2022-01-01
+    :param num: 偏移天数，-1表示向过去偏移一天，1表示向未来偏移1天，0表示当天，默认值为0
+    :param f: 输出时间格式
     :return: 2018-01-02
     """
-    date = get_format_date(date_input)
+    if isinstance(date_input, str):
+        date = get_format_date(date_input)
+    elif isinstance(date_input, datetime.date):
+        date = date_input
+    else:
+        return
     delta = datetime.timedelta(days=num)
     n_days = date + delta
     date_add = n_days.strftime(f)
