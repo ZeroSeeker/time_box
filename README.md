@@ -2,7 +2,7 @@
 
 #### 介绍
 快速使用时间模块  
-项目转移至：https://gitee.com/ZeroSeeker/fasttime
+项目转移至：https://gitee.com/ZeroSeeker/lazytime
 
 #### 软件架构
 软件架构说明

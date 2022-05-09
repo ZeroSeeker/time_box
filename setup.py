@@ -13,7 +13,7 @@ with open("README.md", "r", encoding='utf-8') as fh:
 
 setuptools.setup(
     name="time_box",
-    version="0.0.10",
+    version="0.0.11",
     author="ZeroSeeker",
     author_email="zeroseeker@foxmail.com",
     description="Time processing tool collection",
